@@ -8,6 +8,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.app = app
+        
+        
+        
 
         self.actionQuit.triggered.connect(self.quit)
         self.actionCopy.triggered.connect(self.copy)
