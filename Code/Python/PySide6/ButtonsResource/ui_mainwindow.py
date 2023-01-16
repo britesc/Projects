@@ -16,8 +16,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QMainWindow, QMenu, QMenuBar,
-    QSizePolicy, QStatusBar, QToolBar, QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLineEdit, QMainWindow,
+    QMenu, QMenuBar, QSizePolicy, QSpacerItem,
+    QStatusBar, QToolBar, QWidget)
 import buttonresource_rc
 
 class Ui_MainWindow(object):
@@ -404,8 +405,30 @@ class Ui_MainWindow(object):
         self.actionMenuAbout.setObjectName(u"actionMenuAbout")
         self.actionMenuAboutQt = QAction(MainWindow)
         self.actionMenuAboutQt.setObjectName(u"actionMenuAboutQt")
+        self.actionMenuRun = QAction(MainWindow)
+        self.actionMenuRun.setObjectName(u"actionMenuRun")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.horizontalLayoutWidget = QWidget(self.centralwidget)
+        self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
+        self.horizontalLayoutWidget.setGeometry(QRect(50, 220, 721, 80))
+        self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.lineEditLeft = QLineEdit(self.horizontalLayoutWidget)
+        self.lineEditLeft.setObjectName(u"lineEditLeft")
+
+        self.horizontalLayout.addWidget(self.lineEditLeft)
+
+        self.horizontalSpacer = QSpacerItem(168, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.lineEditRight = QLineEdit(self.horizontalLayoutWidget)
+        self.lineEditRight.setObjectName(u"lineEditRight")
+
+        self.horizontalLayout.addWidget(self.lineEditRight)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubarStandard = QMenuBar(MainWindow)
         self.menubarStandard.setObjectName(u"menubarStandard")
@@ -420,6 +443,8 @@ class Ui_MainWindow(object):
         self.menu_Window.setObjectName(u"menu_Window")
         self.menu_Help = QMenu(self.menubarStandard)
         self.menu_Help.setObjectName(u"menu_Help")
+        self.menu_Build = QMenu(self.menubarStandard)
+        self.menu_Build.setObjectName(u"menu_Build")
         MainWindow.setMenuBar(self.menubarStandard)
         self.statusbarStandard = QStatusBar(MainWindow)
         self.statusbarStandard.setObjectName(u"statusbarStandard")
@@ -435,6 +460,7 @@ class Ui_MainWindow(object):
         self.menubarStandard.addAction(self.menu_File.menuAction())
         self.menubarStandard.addAction(self.menu_Edit.menuAction())
         self.menubarStandard.addAction(self.menu_Settings.menuAction())
+        self.menubarStandard.addAction(self.menu_Build.menuAction())
         self.menubarStandard.addAction(self.menu_Window.menuAction())
         self.menubarStandard.addAction(self.menu_Help.menuAction())
         self.menu_File.addAction(self.actionMenuSave)
@@ -457,6 +483,7 @@ class Ui_MainWindow(object):
         self.menu_Help.addSeparator()
         self.menu_Help.addAction(self.actionMenuAbout)
         self.menu_Help.addAction(self.actionMenuAboutQt)
+        self.menu_Build.addAction(self.actionMenuRun)
         self.toolBarSmall.addAction(self.actionExit)
         self.toolBarSmall.addSeparator()
         self.toolBarSmall.addAction(self.actionSave)
@@ -808,11 +835,16 @@ class Ui_MainWindow(object):
         self.actionMenuConfigure.setText(QCoreApplication.translate("MainWindow", u"Configure", None))
         self.actionMenuAbout.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.actionMenuAboutQt.setText(QCoreApplication.translate("MainWindow", u"About Qt", None))
+        self.actionMenuRun.setText(QCoreApplication.translate("MainWindow", u"Run", None))
+#if QT_CONFIG(shortcut)
+        self.actionMenuRun.setShortcut(QCoreApplication.translate("MainWindow", u"Ctrl+R", None))
+#endif // QT_CONFIG(shortcut)
         self.menu_File.setTitle(QCoreApplication.translate("MainWindow", u"&File", None))
         self.menu_Edit.setTitle(QCoreApplication.translate("MainWindow", u"&Edit", None))
         self.menu_Settings.setTitle(QCoreApplication.translate("MainWindow", u"&Settings", None))
         self.menu_Window.setTitle(QCoreApplication.translate("MainWindow", u"&Window", None))
         self.menu_Help.setTitle(QCoreApplication.translate("MainWindow", u"&Help", None))
+        self.menu_Build.setTitle(QCoreApplication.translate("MainWindow", u"&Build", None))
         self.toolBarSmall.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBarSmall", None))
     # retranslateUi
 

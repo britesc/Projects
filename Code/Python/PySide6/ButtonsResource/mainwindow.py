@@ -1,5 +1,7 @@
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QClipboard
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
+
 
 from ui_mainwindow import Ui_MainWindow
 
@@ -24,13 +26,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actionMenuSelectAll.triggered.connect(self.selectall)
         
         #Settings
+        self.actionMenuConfigure.triggered.connect(self.configure)
         
         
         #Window
-        
+        self.actionMenuMinimise.triggered.connect(self.minimise)
+        self.actionMenuMaximise.triggered.connect(self.maximise)
         
         #Help
+        self.actionMenuContextHelp.triggered.connect(self.contexthelp)
+        self.actionMenuAbout.triggered.connect(self.about)
+        self.actionMenuAboutQt.triggered.connect(self.qtabout)
         
+        #My Musings
         
     #File    
     def save(self):
@@ -44,7 +52,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     #Edit    
     def copy(self):
-        pass
+        self.__na
     
     def cut(self):
         pass
@@ -66,9 +74,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             
             
     #Settings
-    
+    def configure(self):
+        pass   
     
     #Window
+    def minimise(self):
+        pass
     
+    def maximise(self):
+        pass   
     
     #Help        
+    def contexthelp(self):
+        pass
+    
+    def about(self):
+        self.aboutDialogBox()
+    
+    def qtabout(self):
+        QApplication.aboutQt()    
+    
+    #My Musings
+    def aboutDialogBox(self):
+        QMessageBox.information(self,"Going pro!","QMainWindow,Qt Designer and Resources : Going pro!")
+
+

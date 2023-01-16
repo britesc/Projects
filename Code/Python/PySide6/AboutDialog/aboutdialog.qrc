@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="images">
+    <file>images/ProjectCreator.png</file>
+  </qresource>
+  <qresource prefix="buttons">
+    <file>Buttons/glassButtonClose.png</file>
+  </qresource>
+</RCC>
