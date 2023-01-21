@@ -6,11 +6,11 @@ import os
 import sqlite3
 from sqlite3 import Error
 
+            #id integer PRIMARY KEY NOT NULL,
 vDatabase = r"test2.db"
-vTable1 = """ CREATE TABLE IF NOT EXISTS project_dir (
-            id integer PRIMARY KEY,
-            project_dir text NOT NULL
-        ); """
+vTable1 = r"CREATE TABLE IF NOT EXISTS project_dir (rowid INTEGER PRIMARY KEY, project_dir text NOT NULL);"
+vTable1Delete = r"DELETE FROM project_dir;"
+vTable1Insert = r"INSERT INTO project_dir (project_dir) VALUES('Another Dir');" 
 
 vConnection = None
 
@@ -53,29 +53,29 @@ class DatabaseRoutines:
         return vListOfFunctions
     
     def connectDatabase(vDatabase):
-#        vConnection = None
+        result = False
         try:
             vConnection = sqlite3.connect(vDatabase)
-            os.chmod(vDatabase, 0o777)
+            result = True
   
         except Error as err:
             print('connectDatabase Query Failed: Error: %s' % (str(err)))
-            vConnection = None
+            result = False
             
         except Exception as err:
             print('connectDatabase Query Failed: Exception: %s' % (str(err)))
-            vConnection = None
+            result = False
  
         finally:    
             print(f"connectDatabase =  {vConnection}")
-            return vConnection
+            vConnection.close()
+#            time.sleep(1)
+            return result
               
     
-    def dropDatabase():
+    def dropDatabase(vDatabase):
         result = False
         try: 
-            if vConnection:
-                vConnection.close()
             if os.path.exists(vDatabase):
                 os.remove(vDatabase)
                 result = True
@@ -90,14 +90,17 @@ class DatabaseRoutines:
         
         finally:
             print(f"dropDatabase =  {result}")
+ #           time.sleep(1)
             return result
     
     
-    def createTables(vConnection, vTable):
+    def createTables(vDatabase, vTable):
         result = False
         try:
+            vConnection = sqlite3.connect(vDatabase)
             cursor = vConnection.cursor()
             cursor.execute(vTable)
+            vConnection.commit()
             result = True
             print(f'{vTable}')
  
@@ -111,21 +114,46 @@ class DatabaseRoutines:
             
         finally:
             print(f"createTables =  {result}")            
+            vConnection.close()
+#            time.sleep(1)
             return result
-  
-            
             
     
-    def putProjectDir():
-        pass
+    def putProjectDir(vDatabase, vQuery):
+        result = False
+        try:
+            vConnection = sqlite3.connect(vDatabase)
+            cursor = vConnection.cursor()
+            cursor.execute(vQuery)
+            vConnection.commit()
+            result = True
+            print(f'{vQuery}')
+ 
+        except Error as err:
+            print('putProjectDir Query Failed: Error: %s' % (str(err)))
+            result = False
+            
+        except Exception as err:
+            print('putProjectDir Query Failed: Exception: %s' % (str(err)))
+            result = False
+            
+        finally:
+            print(f"putProjectDir =  {result}") 
+            vConnection.close()      
+#            time.sleep(1)     
+            return result
+        
+        
     
     def getProjectDir():
         pass
     
 
 def main():
-    vConnection = DatabaseRoutines.connectDatabase(vDatabase)
-    DatabaseRoutines.createTables(vConnection,  vTable1)
+    DatabaseRoutines.connectDatabase(vDatabase)
+    DatabaseRoutines.createTables(vDatabase,  vTable1)
+    DatabaseRoutines.putProjectDir(vDatabase, vTable1Delete)
+    DatabaseRoutines.putProjectDir(vDatabase, vTable1Insert)
     
 
 if __name__ == '__main__':
