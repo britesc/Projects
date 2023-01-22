@@ -1,4 +1,7 @@
 {
     "activestate.promptRuntimeCreation": false,
-    "doxdocgen.generic.useGitUserEmail": true
+    "doxdocgen.generic.useGitUserEmail": true,
+    "python.analysis.extraPaths": [
+        "./BuildMeUpTest/classes"
+    ]
 }

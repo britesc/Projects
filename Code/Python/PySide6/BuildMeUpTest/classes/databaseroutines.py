@@ -6,7 +6,6 @@ import os
 import sqlite3
 from sqlite3 import Error
 
-            #id integer PRIMARY KEY NOT NULL,
 vDatabase = r"test2.db"
 vTable1 = r"CREATE TABLE IF NOT EXISTS project_dir (rowid INTEGER PRIMARY KEY, project_dir text NOT NULL);"
 vTable1Delete = r"DELETE FROM project_dir;"
