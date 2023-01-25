@@ -5,13 +5,9 @@
 import os
 import sqlite3
 from sqlite3 import Error
+import classes.variables as miscVar
 
-vDatabase = r"test2.db"
-vTable1 = r"CREATE TABLE IF NOT EXISTS project_dir (rowid INTEGER PRIMARY KEY, project_dir text NOT NULL);"
-vTable1Delete = r"DELETE FROM project_dir;"
-vTable1Insert = r"INSERT INTO project_dir (project_dir) VALUES('Another Dir');" 
 
-vConnection = None
 
 class DatabaseRoutines:
 
@@ -24,8 +20,8 @@ class DatabaseRoutines:
         return self
 
     def __exit__(self):
-        if vConnection:
-            vConnection.close()
+        if miscVar.vConnection:
+            miscVar.vConnection.close()
         print(f"Exit Method Called")
    
     def __str__(self):
@@ -149,10 +145,10 @@ class DatabaseRoutines:
     
 
 def main():
-    DatabaseRoutines.connectDatabase(vDatabase)
-    DatabaseRoutines.createTables(vDatabase,  vTable1)
-    DatabaseRoutines.putProjectDir(vDatabase, vTable1Delete)
-    DatabaseRoutines.putProjectDir(vDatabase, vTable1Insert)
+    DatabaseRoutines.connectDatabase(miscVar.vDatabase)
+    DatabaseRoutines.createTables(miscVar.vDatabase,  miscVar.vTable1)
+    DatabaseRoutines.putProjectDir(miscVar.vDatabase, miscVar.vTable1Delete)
+    DatabaseRoutines.putProjectDir(miscVar.vDatabase, miscVar.vTable1Insert)
     
 
 if __name__ == '__main__':
