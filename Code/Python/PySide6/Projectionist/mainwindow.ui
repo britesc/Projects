@@ -161,10 +161,11 @@
    </attribute>
    <addaction name="actionExit"/>
    <addaction name="actionSettings"/>
+   <addaction name="actionTheme"/>
   </widget>
   <action name="actionExit">
    <property name="icon">
-    <iconset resource="splash.qrc">
+    <iconset resource="buttons.qrc">
      <normaloff>:/buttons/buttons/glassButtonExit.png</normaloff>:/buttons/buttons/glassButtonExit.png</iconset>
    </property>
    <property name="text">
@@ -179,7 +180,7 @@
   </action>
   <action name="actionSettings">
    <property name="icon">
-    <iconset resource="splash.qrc">
+    <iconset resource="buttons.qrc">
      <normaloff>:/buttons/buttons/glassButtonConfigure.png</normaloff>:/buttons/buttons/glassButtonConfigure.png</iconset>
    </property>
    <property name="text">
@@ -204,9 +205,22 @@
     <string>Auto</string>
    </property>
   </action>
+  <action name="actionTheme">
+   <property name="icon">
+    <iconset resource="buttons.qrc">
+     <normaloff>:/buttons/buttons/glassButtonTheme.png</normaloff>:/buttons/buttons/glassButtonTheme.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Theme</string>
+   </property>
+   <property name="toolTip">
+    <string>Change Theme</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="splash.qrc"/>
+  <include location="buttons.qrc"/>
  </resources>
  <connections/>
 </ui>

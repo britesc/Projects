@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="buttons">
+    <file>buttons/glassButtonTheme.png</file>
     <file>buttons/glassButtonAbort.png</file>
     <file>buttons/glassButtonAbout.png</file>
     <file>buttons/glassButtonAndroid.png</file>
