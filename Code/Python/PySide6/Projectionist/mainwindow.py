@@ -16,8 +16,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.actionDark.triggered.connect(self.dark)
         self.actionAuto.triggered.connect(self.auto)
         self.actionTheme.triggered.connect(self.theme)
-        self.actionAbout.triggered.connect(self.about)
-        self.actionAboutQt.triggered.connect(self.aboutQt)
+        #self.actionAbout.triggered.connect(self.about)
+        #self.actionAboutQt.triggered.connect(self.aboutQt)
 
     def exit(self):
         self.app.quit()
