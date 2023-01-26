@@ -1,0 +1,5 @@
+Tools Info.
+
+pyside6-uic name.ui > ui.name.py
+pyside6-rcc name.qrc -o rc_name.py
+

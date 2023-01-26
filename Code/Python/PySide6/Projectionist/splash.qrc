@@ -1,9 +1,5 @@
 <RCC>
-    <qresource prefix="/images">
-        <file>images/splash.png</file>
-    </qresource>
-    <qresource prefix="/buttons">
-        <file>buttons/glassButtonConfigure.png</file>
-        <file>buttons/glassButtonExit.png</file>
-    </qresource>
+  <qresource prefix="/images">
+    <file>images/splash.png</file>
+  </qresource>
 </RCC>
