@@ -9,6 +9,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.app = app
         
+        self.setWindowTitle("Projectionist Configuration")
 
         self.actionExit.triggered.connect(self.exit)
         self.actionSettings.triggered.connect(self.settings)
