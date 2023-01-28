@@ -29,6 +29,9 @@
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <layout class="QVBoxLayout" name="verticalLayoutMain">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
@@ -109,12 +112,81 @@
                 <property name="text">
                  <string>Project Folder:</string>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                </property>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QLineEdit" name="lineEditConfigProjectFolder">
                 <property name="text">
                  <string>          Please Enter Project Main Folder</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <layout class="QVBoxLayout" name="vertitcalLayoutgridLayoutConfigTabButtonLocate">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayoutConfigButtonLocate" stretch="97,1,1,1">
+              <item>
+               <spacer name="horizontalSpacerTabConfigLineEditProjectFolderLeft">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButtonProjectFolderLocate">
+                <property name="statusTip">
+                 <string>Locate Project Folder</string>
+                </property>
+                <property name="text">
+                 <string>Locate</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="buttons.qrc">
+                  <normaloff>:/glass/buttons/glassButtonAbort.png</normaloff>:/glass/buttons/glassButtonAbort.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButtonProjectFolderSave">
+                <property name="statusTip">
+                 <string>Save Location of Project Folder</string>
+                </property>
+                <property name="text">
+                 <string>Save</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="buttons.qrc">
+                  <normaloff>:/glass/buttons/glassButtonSave.png</normaloff>:/glass/buttons/glassButtonSave.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButtonProjectFolderCancel">
+                <property name="statusTip">
+                 <string>Discard Changes</string>
+                </property>
+                <property name="text">
+                 <string>Cancel</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="buttons.qrc">
+                  <normaloff>:/glass/buttons/glassButtonCancel.png</normaloff>:/glass/buttons/glassButtonCancel.png</iconset>
                 </property>
                </widget>
               </item>
@@ -133,47 +205,6 @@
                <set>Qt::AlignCenter</set>
               </property>
              </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="5" column="0">
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayoutConfigButtonLocate">
-              <item>
-               <spacer name="horizontalSpacerTabConfigLineEditProjectFolderLeft">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButtonProjectFolderLocate">
-                <property name="text">
-                 <string>Locate</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacerTabConfigLineEditProjectFolderRight">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
             </item>
            </layout>
           </item>
@@ -216,7 +247,15 @@
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAboutQt"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -235,11 +274,20 @@
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
+   </property>
    <property name="iconSize">
     <size>
      <width>48</width>
      <height>48</height>
     </size>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -253,8 +301,8 @@
   </widget>
   <action name="actionExit">
    <property name="icon">
-    <iconset>
-     <normaloff>:/buttons/buttons/glassButtonExit.png</normaloff>:/buttons/buttons/glassButtonExit.png</iconset>
+    <iconset theme="appointment-missed" resource="buttons.qrc">
+     <normaloff>:/glass/buttons/glassButtonExit.png</normaloff>:/glass/buttons/glassButtonExit.png</iconset>
    </property>
    <property name="text">
     <string>E&amp;xit</string>
@@ -268,8 +316,8 @@
   </action>
   <action name="actionSettings">
    <property name="icon">
-    <iconset>
-     <normaloff>:/buttons/buttons/glassButtonConfigure.png</normaloff>:/buttons/buttons/glassButtonConfigure.png</iconset>
+    <iconset resource="buttons.qrc">
+     <normaloff>:/glass/buttons/glassButtonConfigure.png</normaloff>:/glass/buttons/glassButtonConfigure.png</iconset>
    </property>
    <property name="text">
     <string>Settings</string>
@@ -295,8 +343,8 @@
   </action>
   <action name="actionTheme">
    <property name="icon">
-    <iconset>
-     <normaloff>:/buttons/buttons/glassButtonTheme.png</normaloff>:/buttons/buttons/glassButtonTheme.png</iconset>
+    <iconset resource="buttons.qrc">
+     <normaloff>:/glass/buttons/glassButtonTheme.png</normaloff>:/glass/buttons/glassButtonTheme.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Theme</string>
@@ -306,6 +354,24 @@
    </property>
    <property name="statusTip">
     <string>Change Application Theme</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="buttons.qrc">
+     <normaloff>:/glass/buttons/glassButtonAbout.png</normaloff>:/glass/buttons/glassButtonAbout.png</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="icon">
+    <iconset resource="buttons.qrc">
+     <normaloff>:/glass/buttons/glassButtonQt.png</normaloff>:/glass/buttons/glassButtonQt.png</iconset>
+   </property>
+   <property name="text">
+    <string>Abot Qt</string>
    </property>
   </action>
  </widget>
