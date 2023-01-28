@@ -11,8 +11,6 @@ from PySide6.QtGui import QPixmap
 
 from mainwindow import MainWindow
 
-import splash_rc
-
 global vProjectLocation
 global vDatabaseLocation
 

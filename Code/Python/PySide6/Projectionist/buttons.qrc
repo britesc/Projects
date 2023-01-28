@@ -1,5 +1,5 @@
 <RCC>
-  <qresource prefix="buttons">
+  <qresource prefix="glass">
     <file>buttons/glassButtonTheme.png</file>
     <file>buttons/glassButtonAbort.png</file>
     <file>buttons/glassButtonAbout.png</file>

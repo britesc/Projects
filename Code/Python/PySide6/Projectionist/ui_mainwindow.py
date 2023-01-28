@@ -16,8 +16,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QMainWindow,
-    QMenu, QMenuBar, QSizePolicy, QStatusBar,
+from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
+    QLineEdit, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
     QTabWidget, QToolBar, QVBoxLayout, QWidget)
 import splash_rc
 import buttons_rc
@@ -95,6 +96,67 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tabInfo, "")
         self.tabConfiguration = QWidget()
         self.tabConfiguration.setObjectName(u"tabConfiguration")
+        self.gridLayout = QGridLayout(self.tabConfiguration)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.verticalLayoutConfigProjectFolder = QVBoxLayout()
+        self.verticalLayoutConfigProjectFolder.setObjectName(u"verticalLayoutConfigProjectFolder")
+        self.horizontalLayoutConfigProjectFolder = QHBoxLayout()
+        self.horizontalLayoutConfigProjectFolder.setSpacing(10)
+        self.horizontalLayoutConfigProjectFolder.setObjectName(u"horizontalLayoutConfigProjectFolder")
+        self.horizontalLayoutConfigProjectFolder.setContentsMargins(10, -1, 10, -1)
+        self.labelConfigProjectFolder = QLabel(self.tabConfiguration)
+        self.labelConfigProjectFolder.setObjectName(u"labelConfigProjectFolder")
+
+        self.horizontalLayoutConfigProjectFolder.addWidget(self.labelConfigProjectFolder)
+
+        self.lineEditConfigProjectFolder = QLineEdit(self.tabConfiguration)
+        self.lineEditConfigProjectFolder.setObjectName(u"lineEditConfigProjectFolder")
+
+        self.horizontalLayoutConfigProjectFolder.addWidget(self.lineEditConfigProjectFolder)
+
+
+        self.verticalLayoutConfigProjectFolder.addLayout(self.horizontalLayoutConfigProjectFolder)
+
+
+        self.gridLayout.addLayout(self.verticalLayoutConfigProjectFolder, 4, 0, 1, 1)
+
+        self.gridLayoutConfigTab = QGridLayout()
+        self.gridLayoutConfigTab.setObjectName(u"gridLayoutConfigTab")
+        self.labelConfigTitle = QLabel(self.tabConfiguration)
+        self.labelConfigTitle.setObjectName(u"labelConfigTitle")
+        self.labelConfigTitle.setAlignment(Qt.AlignCenter)
+
+        self.gridLayoutConfigTab.addWidget(self.labelConfigTitle, 0, 0, 1, 1)
+
+
+        self.gridLayout.addLayout(self.gridLayoutConfigTab, 0, 0, 1, 1)
+
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.horizontalLayoutConfigButtonLocate = QHBoxLayout()
+        self.horizontalLayoutConfigButtonLocate.setObjectName(u"horizontalLayoutConfigButtonLocate")
+        self.horizontalSpacerTabConfigLineEditProjectFolderLeft = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayoutConfigButtonLocate.addItem(self.horizontalSpacerTabConfigLineEditProjectFolderLeft)
+
+        self.pushButtonProjectFolderLocate = QPushButton(self.tabConfiguration)
+        self.pushButtonProjectFolderLocate.setObjectName(u"pushButtonProjectFolderLocate")
+
+        self.horizontalLayoutConfigButtonLocate.addWidget(self.pushButtonProjectFolderLocate)
+
+        self.horizontalSpacerTabConfigLineEditProjectFolderRight = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayoutConfigButtonLocate.addItem(self.horizontalSpacerTabConfigLineEditProjectFolderRight)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayoutConfigButtonLocate)
+
+
+        self.gridLayout.addLayout(self.verticalLayout_4, 5, 0, 1, 1)
+
+        self.gridLayout.setRowStretch(1, 1)
+        self.gridLayout.setRowStretch(4, 98)
+        self.gridLayout.setRowStretch(5, 1)
         self.tabWidget.addTab(self.tabConfiguration, "")
         self.tabAction = QWidget()
         self.tabAction.setObjectName(u"tabAction")
@@ -138,7 +200,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -164,9 +226,16 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.actionTheme.setToolTip(QCoreApplication.translate("MainWindow", u"Change Theme", None))
 #endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.actionTheme.setStatusTip(QCoreApplication.translate("MainWindow", u"Change Application Theme", None))
+#endif // QT_CONFIG(statustip)
         self.labelInfoTitle.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:xx-large; font-weight:700;\">Projectionist</span></h1></body></html>", None))
         self.labelInfoDetails.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><h3 style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:large; font-weight:700;\">Welcome to Projectionist.</span></h3><h4>In order to make use of this excellent application it is first necessary to configure it.</h4><h4>It may also be necessary to add applications to the OS $PATH Variable to ensure that they can be found and utilised correctly. This should be fairly easy to do.</h4><h4>Once you are ready to commence the configuration, please click on the Configuration Tab and follow the instructions.</h4><h4>This application has been set to operate in a minimum size of 640 x 520, but can operate just as well or better in large sizes, imcluding full screen.</h4><h5 align=\"center\">Copyright J2Casa 2023. All Rights Reserved</h5><p><br/></p></body></html>", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabInfo), QCoreApplication.translate("MainWindow", u"Information", None))
+        self.labelConfigProjectFolder.setText(QCoreApplication.translate("MainWindow", u"Project Folder:", None))
+        self.lineEditConfigProjectFolder.setText(QCoreApplication.translate("MainWindow", u"          Please Enter Project Main Folder", None))
+        self.labelConfigTitle.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:xx-large; font-weight:700;\">Configuration</span></h1></body></html>", None))
+        self.pushButtonProjectFolderLocate.setText(QCoreApplication.translate("MainWindow", u"Locate", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabConfiguration), QCoreApplication.translate("MainWindow", u"Configuration", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabAction), QCoreApplication.translate("MainWindow", u"Action", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))

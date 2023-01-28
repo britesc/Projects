@@ -32,7 +32,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tabInfo">
          <attribute name="title">
@@ -90,6 +90,94 @@
          <attribute name="title">
           <string>Configuration</string>
          </attribute>
+         <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0,0,98,1">
+          <item row="4" column="0">
+           <layout class="QVBoxLayout" name="verticalLayoutConfigProjectFolder">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayoutConfigProjectFolder">
+              <property name="spacing">
+               <number>10</number>
+              </property>
+              <property name="leftMargin">
+               <number>10</number>
+              </property>
+              <property name="rightMargin">
+               <number>10</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="labelConfigProjectFolder">
+                <property name="text">
+                 <string>Project Folder:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEditConfigProjectFolder">
+                <property name="text">
+                 <string>          Please Enter Project Main Folder</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayoutConfigTab">
+            <item row="0" column="0">
+             <widget class="QLabel" name="labelConfigTitle">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h1 style=&quot; margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:xx-large; font-weight:700;&quot;&gt;Configuration&lt;/span&gt;&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayoutConfigButtonLocate">
+              <item>
+               <spacer name="horizontalSpacerTabConfigLineEditProjectFolderLeft">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButtonProjectFolderLocate">
+                <property name="text">
+                 <string>Locate</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacerTabConfigLineEditProjectFolderRight">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="tabAction">
          <attribute name="title">
@@ -165,7 +253,7 @@
   </widget>
   <action name="actionExit">
    <property name="icon">
-    <iconset resource="buttons.qrc">
+    <iconset>
      <normaloff>:/buttons/buttons/glassButtonExit.png</normaloff>:/buttons/buttons/glassButtonExit.png</iconset>
    </property>
    <property name="text">
@@ -180,7 +268,7 @@
   </action>
   <action name="actionSettings">
    <property name="icon">
-    <iconset resource="buttons.qrc">
+    <iconset>
      <normaloff>:/buttons/buttons/glassButtonConfigure.png</normaloff>:/buttons/buttons/glassButtonConfigure.png</iconset>
    </property>
    <property name="text">
@@ -207,7 +295,7 @@
   </action>
   <action name="actionTheme">
    <property name="icon">
-    <iconset resource="buttons.qrc">
+    <iconset>
      <normaloff>:/buttons/buttons/glassButtonTheme.png</normaloff>:/buttons/buttons/glassButtonTheme.png</iconset>
    </property>
    <property name="text">
@@ -215,6 +303,9 @@
    </property>
    <property name="toolTip">
     <string>Change Theme</string>
+   </property>
+   <property name="statusTip">
+    <string>Change Application Theme</string>
    </property>
   </action>
  </widget>
