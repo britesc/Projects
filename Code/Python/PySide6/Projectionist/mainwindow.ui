@@ -25,6 +25,13 @@
   <property name="windowTitle">
    <string>Projectionist</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="splash.qrc">
+    <normaloff>:/images/images/icon.png</normaloff>:/images/images/icon.png</iconset>
+  </property>
+  <property name="animated">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
@@ -158,7 +165,7 @@
                 </property>
                 <property name="icon">
                  <iconset resource="buttons.qrc">
-                  <normaloff>:/glass/buttons/glassButtonAbort.png</normaloff>:/glass/buttons/glassButtonAbort.png</iconset>
+                  <normaloff>:/glass/buttons/glassButtonFind.png</normaloff>:/glass/buttons/glassButtonFind.png</iconset>
                 </property>
                </widget>
               </item>
