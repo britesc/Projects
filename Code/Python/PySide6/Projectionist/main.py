@@ -3,55 +3,51 @@
 
 
 import sys
+import qdarktheme
+import traceback
 
 from PySide6.QtWidgets import QApplication, QSplashScreen
-from PyQt6.QtCore import QSettings, QCoreApplication
+
 from PySide6.QtGui import QPixmap
 
 from mainwindow import MainWindow
-from classes import j2_utilities as vJ2
-
-global vProjectLocation
-global vDatabaseLocation
+from classes._j2_utilities import J2_Utilities
+from classes import _variables
+from classes._j2_settings import J2_Settings
 
 
 def main():
     try:
-        QCoreApplication.setOrganizationName("J2Casa")
-        QCoreApplication.setApplicationName("Projectionist")
-        settings = QSettings()
-
-        vProjectLocation = settings.value("Project/Folder", False)
-        vDatabaseLocation = settings.value("Database/Folder", False)
-
-        if vProjectLocation is False:
-            print(f"vProjectLocation = {vProjectLocation}")
-            settings.setValue("Project/Folder", "")
-        if vDatabaseLocation is False:
-            print(f"vDatabaseLocation = {vDatabaseLocation}")
-            settings.setValue("Database/Folder", "")
-
+        _variables.init()
         app = QApplication(sys.argv)
         pixmap = QPixmap(":images/images/splash.png")
+
+        vJ2S = J2_Settings("J2Casa", "Projectionist")
+        vJ2S.setDefaults()
+        vJ2U = J2_Utilities()
+
         splash = QSplashScreen(pixmap)
         splash.show()
         looper = 5
-        j2s = vJ2.J2_Utilities
+
         while looper > 0:
-            j2s.j2Sleep(1)
+            vJ2U.j2Sleep(1)
 
             app.processEvents()
             looper = looper - 1
 
         app.processEvents()
-
+        qdarktheme.setup_theme()
         w = MainWindow(app)
         w.show()
         splash.finish(w)
 
-    except Exception:
+    except Exception as err:
         print("Unfortunately Projectionist has encountered an error \
-            and is unable to continue.")
+and is unable to continue.")
+        print(f"Unexpected {err=}, {type(err)=}")
+        traceback.print_exc()
+        traceback.print_exception()
 
     finally:
         sys.exit(app.exec())

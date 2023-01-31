@@ -1,3 +1,4 @@
+import qdarktheme
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt6.QtCore import QSettings
@@ -10,65 +11,88 @@ from ui_mainwindow import Ui_MainWindow
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, app):
         super().__init__()
+        self.settings = QSettings()
         self.setupUi(self)
         self.app = app
 
         self.setWindowTitle("Projectionist Configuration")
 
-        self.actionExit.triggered.connect(self.exit)
-        self.actionSettings.triggered.connect(self.settings)
-        self.actionLight.triggered.connect(self.light)
-        self.actionDark.triggered.connect(self.dark)
-        self.actionAuto.triggered.connect(self.auto)
+        self.actionExit.triggered.connect(self.MWExit)
+        self.actionSettings.triggered.connect(self.MWSettings)
+        self.actionLight.triggered.connect(self.MWlight)
+        self.actionDark.triggered.connect(self.MWdark)
+        self.actionAuto.triggered.connect(self.MWauto)
         self.actionTheme.triggered.connect(self.theme)
-        self.actionAbout.triggered.connect(self.about)
-        self.actionAboutQt.triggered.connect(self.aboutQt)
-        self.pushButtonProjectFolderLocate.clicked.connect(self.PFLocate)
-        self.pushButtonProjectFolderSave.clicked.connect(self.dummy_function)
-        self.pushButtonProjectFolderCancel.clicked.connect(self.dummy_function)
-        self.lineEditConfigProjectFolder.textChanged(self.PFChanged)
+        self.actionAbout.triggered.connect(self.MWAbout)
+        self.actionAboutQt.triggered.connect(self.MWAboutQt)
+        self.pushButtonPFLocate.clicked.connect(self.PFLocate)
+        self.pushButtonPFSave.clicked.connect(self.dummy_function)
+        self.pushButtonPFCancel.clicked.connect(self.PFSettings)
+        self.lineEditPFConfig.textChanged.connect(self.dummy_function)
+
+        self.MWSettings()
 
     def dummy_function(self) -> None:
         print("Dummy Function Called")
 
-    def exit(self) -> None:
+    def MWExit(self) -> None:
         self.app.quit()
 
-    def settings(self) -> None:
-        pass
+    def MWSettings(self) -> None:
 
-    def light(self) -> None:
-        pass
+        vMWTheme = self.settings.value("Window/Theme", "auto")
+        match vMWTheme:
+            case "auto":
+                self.MWauto()
+            case "dark":
+                self.MWdark()
+            case "light":
+                self.MWlight()
+            case _:
+                self.MWauto()
+        self.PFSettings()
 
-    def dark(self) -> None:
-        pass
+    def MWlight(self) -> None:
+        qdarktheme.setup_theme("light")
+        self.settings.setValue("Window/Theme", "light")
 
-    def auto(self) -> None:
-        pass
+    def MWdark(self) -> None:
+        qdarktheme.setup_theme("dark")
+        self.settings.setValue("Window/Theme", "dark")
+
+    def MWauto(self) -> None:
+        qdarktheme.setup_theme("auto")
+        self.settings.setValue("Window/Theme", "auto")
 
     def theme(self) -> None:
-        pass
+        vMWTheme = self.settings.value("Window/Theme", "auto")
+        match vMWTheme:
+            case "auto":
+                self.MWdark()
+            case "dark":
+                self.MWlight()
+            case "light":
+                self.MWauto()
+            case _:
+                self.MWauto()
 
-    def about(self) -> None:
+    def MWAbout(self) -> None:
         QMessageBox.information(self, "Rubbish!", " Rubbish!")
 
-    def aboutQt(self) -> None:
+    def MWAboutQt(self) -> None:
         QApplication.aboutQt()
 
-    def PFCancel(self) -> None:
-        self.projectlolderlineedit(self)
-
-    def projectlolderlineedit(self) -> None:
+    def PFSettings(self) -> None:
         settings = QSettings()
 
         vProjectLocation = settings.value("Project/Folder", False)
 
         if vProjectLocation is not False:
-            self.projectlolderlineedit.setText(vProjectLocation)
-            self.pushButtonProjectFolderSave.setEnabled(True)
+            self.lineEditPFConfig.setText(vProjectLocation)
+            self.pushButtonPFSave.setEnabled(True)
         else:
-            self.projectlolderlineedit.setText("Please Enter Project Folder")
-            self.pushButtonProjectFolderSave.setEnabled(False)
+            self.lineEditPFConfig.setText("Please Enter Project Folder")
+            self.pushButtonPFSave.setEnabled(False)
 
     def PFLocate(self) -> str:
         dir = QFileDialog.getExistingDirectory(self,
@@ -77,17 +101,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                                QFileDialog.ShowDirsOnly |
                                                QFileDialog.DontResolveSymlinks)
 
-        self.lineEditConfigProjectFolder.setText(dir)
+        self.lineEditPFConfig.setText(dir)
 
     def PFChanged(self) -> None:
-        # if the line edit text is equal to a folder
-        # enable the save pushbutton
-        # enable the cancel pushbutton
-        vCheckPath = self.lineEditConfigProjectFolder.text()
+        vCheckPath = self.lineEditPFConfig.text()
         vRealPath = Path(vCheckPath).is_dir()
         if vRealPath is True:
-            self.pushButtonProjectFolderSave.setEnabled(True)
-            self.pushButtonProjectFolderCancel.setEnabled(True)
+            self.pushButtonPFSave.setEnabled(True)
+            self.pushButtonPFCancel.setEnabled(True)
         else:
-            self.pushButtonProjectFolderSave.setEnabled(False)
-            self.pushButtonProjectFolderCancel.setEnabled(False)
+            self.pushButtonPFSave.setEnabled(False)
+            self.pushButtonPFCancel.setEnabled(False)

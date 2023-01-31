@@ -22,7 +22,7 @@ class J2_Utilities:
         vVersion = "1.0.0"
         return vVersion
 
-    def j2Sleep(secs) -> None:
+    def j2Sleep(self, secs) -> None:
         """ An Alternative to Python Sleep """
         init_time = time()
         while time() < init_time+secs:

@@ -102,9 +102,9 @@
          </attribute>
          <layout class="QGridLayout" name="gridLayout" rowstretch="0,1,0,0,98,1">
           <item row="4" column="0">
-           <layout class="QVBoxLayout" name="verticalLayoutConfigProjectFolder">
+           <layout class="QVBoxLayout" name="verticalLayoutPFConfig">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayoutConfigProjectFolder">
+             <layout class="QHBoxLayout" name="horizontalLayoutPFConfig">
               <property name="spacing">
                <number>10</number>
               </property>
@@ -115,22 +115,28 @@
                <number>10</number>
               </property>
               <item>
-               <widget class="QLabel" name="labelConfigProjectFolder">
+               <widget class="QLabel" name="labelPFConfig">
                 <property name="text">
                  <string>Project Folder:</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                 </property>
+                <property name="buddy">
+                 <cstring>lineEditPFConfig</cstring>
+                </property>
                </widget>
               </item>
               <item alignment="Qt::AlignTop">
-               <widget class="QLineEdit" name="lineEditConfigProjectFolder">
+               <widget class="QLineEdit" name="lineEditPFConfig">
                 <property name="text">
-                 <string>          Please Enter Project Main Folder</string>
+                 <string/>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                </property>
+                <property name="placeholderText">
+                 <string>Please Enter Project Main Folder</string>
                 </property>
                </widget>
               </item>
@@ -143,7 +149,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayoutConfigButtonLocate" stretch="97,1,1,1">
               <item>
-               <spacer name="horizontalSpacerTabConfigLineEditProjectFolderLeft">
+               <spacer name="horizontalSpacerTabConfigLineEditPFLeft">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -156,7 +162,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButtonProjectFolderLocate">
+               <widget class="QPushButton" name="pushButtonPFLocate">
                 <property name="statusTip">
                  <string>Locate Project Folder</string>
                 </property>
@@ -170,7 +176,10 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButtonProjectFolderSave">
+               <widget class="QPushButton" name="pushButtonPFSave">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="statusTip">
                  <string>Save Location of Project Folder</string>
                 </property>
@@ -184,7 +193,10 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButtonProjectFolderCancel">
+               <widget class="QPushButton" name="pushButtonPFCancel">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="statusTip">
                  <string>Discard Changes</string>
                 </property>
@@ -308,7 +320,7 @@
   </widget>
   <action name="actionExit">
    <property name="icon">
-    <iconset theme="appointment-missed" resource="buttons.qrc">
+    <iconset resource="buttons.qrc">
      <normaloff>:/glass/buttons/glassButtonExit.png</normaloff>:/glass/buttons/glassButtonExit.png</iconset>
    </property>
    <property name="text">
