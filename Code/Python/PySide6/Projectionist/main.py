@@ -1,24 +1,20 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-
 import sys
 import qdarktheme
 import traceback
 
 from PySide6.QtWidgets import QApplication, QSplashScreen
-
 from PySide6.QtGui import QPixmap
 
 from mainwindow import MainWindow
 from classes._j2_utilities import J2_Utilities
-from classes import _variables
 from classes._j2_settings import J2_Settings
 
 
 def main():
     try:
-        _variables.init()
         app = QApplication(sys.argv)
         pixmap = QPixmap(":images/images/splash.png")
 
@@ -45,7 +41,7 @@ def main():
     except Exception as err:
         print("Unfortunately Projectionist has encountered an error \
 and is unable to continue.")
-        print(f"Unexpected {err=}, {type(err)=}")
+        print(f"Exception {err=}, {type(err)=}")
         traceback.print_exc()
         traceback.print_exception()
 

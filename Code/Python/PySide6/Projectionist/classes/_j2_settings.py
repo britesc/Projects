@@ -12,7 +12,8 @@ class J2_Settings:
         self.AppName = AppName
         QCoreApplication.setOrganizationName(OrgName)
         QCoreApplication.setApplicationName(AppName)
-        self.settings = QSettings()
+        global v3JS
+        v3JS = QSettings()
 
     def __str__(self) -> str:
         """ The __str__ Function """
@@ -29,29 +30,29 @@ class J2_Settings:
 
     def setDefaults(self) -> None:
         """ Set the defaults for settings """
-        vTemp1 = self.settings.value("Window/Theme", False)
+        vTemp1 = v3JS.value("Window/Theme", False)
         if vTemp1 is False:
-            self.settings.setValue("Window/Theme", "auto")
+            v3JS.setValue("Window/Theme", "auto")
 
-        vTemp1 = self.settings.value("Project/Folder", False)
+        vTemp1 = v3JS.value("Project/Folder", False)
         if vTemp1 is False:
-            self.settings.setValue("Project/Folder", "")
+            v3JS.setValue("Project/Folder", "")
 
-        vTemp1 = self.settings.value("Database/Folder", False)
+        vTemp1 = v3JS.value("Database/Folder", False)
         if vTemp1 is False:
-            self.settings.setValue("Database/Folder", "Naturism")
+            v3JS.setValue("Database/Folder", "Naturism")
 
     def setSetting(self, Context, Value) -> None:
         """ Set the Setting """
         self.Context = Context
         self.Value = Value
-        self.settings.setValue(self.Context, self.Value)
+        v3JS.setValue(Context, self.Value)
 
     def getSetting(self, Context, Default) -> str:
         """ Get the Setting """
         self.Context = Context
         self.Default = Default
-        vTemp1 = self.settings.value(Context, Default)
+        vTemp1 = v3JS.value(Context, Default)
         if vTemp1 is False:
             vTemp1 = ""
         return vTemp1

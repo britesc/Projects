@@ -1,46 +1,71 @@
 import qdarktheme
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
-from PyQt6.QtCore import QSettings
 from PySide6.QtWidgets import QFileDialog
 from pathlib import Path
 
 from ui_mainwindow import Ui_MainWindow
+from classes._j2_settings import J2_Settings as V2JS
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, app):
         super().__init__()
-        self.settings = QSettings()
         self.setupUi(self)
         self.app = app
 
         self.setWindowTitle("Projectionist Configuration")
 
         self.actionExit.triggered.connect(self.MWExit)
-        self.actionSettings.triggered.connect(self.MWSettings)
+        """ self.actionSettings.triggered.connect(self.MWSettings) """
         self.actionLight.triggered.connect(self.MWlight)
         self.actionDark.triggered.connect(self.MWdark)
         self.actionAuto.triggered.connect(self.MWauto)
-        self.actionTheme.triggered.connect(self.theme)
+        self.actionTheme.triggered.connect(self.MWTheme)
         self.actionAbout.triggered.connect(self.MWAbout)
         self.actionAboutQt.triggered.connect(self.MWAboutQt)
         self.pushButtonPFLocate.clicked.connect(self.PFLocate)
-        self.pushButtonPFSave.clicked.connect(self.dummy_function)
-        self.pushButtonPFCancel.clicked.connect(self.PFSettings)
-        self.lineEditPFConfig.textChanged.connect(self.dummy_function)
+        self.pushButtonPFSave.clicked.connect(self.PFSave)
+        self.pushButtonPFCancel.clicked.connect(self.PFCancel)
+        self.lineEditPFConfig.textChanged.connect(self.PFChanged)
+
+        """
+            When the window is created we first have to
+            ensure that the Theme is Set
+            Next we have to make sure that Tab 0 is showing
+            We use self.MWSettings() to senure all MainWindow Functionality is
+            correct.
+            Next we ensure Config Tab bittons are off.
+            And that and Line Edit Content is displayed
+            We use self.PFSettings() to ensure all Config Tabs functionality
+            is set.
+            If there is a change to the line edit, we need to check it is a
+            valid Dir.
+            If the tab is shown we await an action
+            1. If Locate is pressed we go to self.PFLocate()
+                Which opens a directory find and save dislog box
+                and displays result in the lineEditPFConfig
+            2. If there is any change to the lineEditPFConfig
+                then self.PFChanged() is called.
+            3. If self.PFChanged() is happy that line entry is a dir it
+                will enable the save and canel buttons which calls
+                self.PFSave() or self.PFCancel() as appropriate
+            4. PFSave writes the value from lineEdit to the
+                settings config file. Buttons are disabled again
+            5. PFCancel retrieves the value from the settings file and
+            reinserts it into the line Edit. Buttons are disabled again.
+        """
 
         self.MWSettings()
+        self.PFSettings()
 
-    def dummy_function(self) -> None:
-        print("Dummy Function Called")
+    """ START OF MAINWINDOW CODE """
 
     def MWExit(self) -> None:
         self.app.quit()
 
     def MWSettings(self) -> None:
-
-        vMWTheme = self.settings.value("Window/Theme", "auto")
+        vMWTheme = V2JS.getSetting(self, "Window/Theme", "auto")
         match vMWTheme:
             case "auto":
                 self.MWauto()
@@ -50,22 +75,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.MWlight()
             case _:
                 self.MWauto()
-        self.PFSettings()
+        self.tabWidget.setCurrentIndex(0)
 
     def MWlight(self) -> None:
         qdarktheme.setup_theme("light")
-        self.settings.setValue("Window/Theme", "light")
+        V2JS.setSetting("self,Window/Theme", "light")
 
     def MWdark(self) -> None:
         qdarktheme.setup_theme("dark")
-        self.settings.setValue("Window/Theme", "dark")
+        V2JS.setSetting("self, Window/Theme", "dark")
 
     def MWauto(self) -> None:
         qdarktheme.setup_theme("auto")
-        self.settings.setValue("Window/Theme", "auto")
+        V2JS.setSetting(self, "Window/Theme", "auto")
 
-    def theme(self) -> None:
-        vMWTheme = self.settings.value("Window/Theme", "auto")
+    def MWTheme(self) -> None:
+        vMWTheme = V2JS.getSetting(self, "Window/Theme", "auto")
         match vMWTheme:
             case "auto":
                 self.MWdark()
@@ -82,17 +107,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def MWAboutQt(self) -> None:
         QApplication.aboutQt()
 
+    """ END OF MAINWINDOW CODE """
+
+    """ START OF CONFIG TAB CODE """
+
     def PFSettings(self) -> None:
-        settings = QSettings()
-
-        vProjectLocation = settings.value("Project/Folder", False)
-
-        if vProjectLocation is not False:
-            self.lineEditPFConfig.setText(vProjectLocation)
-            self.pushButtonPFSave.setEnabled(True)
-        else:
-            self.lineEditPFConfig.setText("Please Enter Project Folder")
-            self.pushButtonPFSave.setEnabled(False)
+        self._tabConfigButtonsOff()
+        vPFLocation = V2JS.getSetting(self, "Project/Folder", False)
+        if vPFLocation:
+            self.lineEditPFConfig.setText(vPFLocation)
 
     def PFLocate(self) -> str:
         dir = QFileDialog.getExistingDirectory(self,
@@ -100,15 +123,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                                "/home",
                                                QFileDialog.ShowDirsOnly |
                                                QFileDialog.DontResolveSymlinks)
-
         self.lineEditPFConfig.setText(dir)
 
     def PFChanged(self) -> None:
         vCheckPath = self.lineEditPFConfig.text()
         vRealPath = Path(vCheckPath).is_dir()
         if vRealPath is True:
-            self.pushButtonPFSave.setEnabled(True)
-            self.pushButtonPFCancel.setEnabled(True)
+            self._tabConfigButtonsOn()
         else:
-            self.pushButtonPFSave.setEnabled(False)
-            self.pushButtonPFCancel.setEnabled(False)
+            self._tabConfigButtonsOff()
+
+    def PFSave(self) -> None:
+        vCheckPath = self.lineEditPFConfig.text()
+        V2JS.setSetting(self, "Project/Folder", vCheckPath)
+        self._tabConfigButtonsOff()
+
+    def PFCancel(self) -> None:
+        vPFLocation = V2JS.getSetting(self, "Project/Folder", False)
+        if vPFLocation:
+            self.lineEditPFConfig.setText(vPFLocation)
+        self._tabConfigButtonsOff()
+
+    def _tabConfigButtonsOn(self) -> None:
+        self.pushButtonPFSave.setEnabled(True)
+        self.pushButtonPFCancel.setEnabled(True)
+
+    def _tabConfigButtonsOff(self) -> None:
+        self.pushButtonPFSave.setEnabled(False)
+        self.pushButtonPFCancel.setEnabled(False)
+
+    """ END OF CONFIG TAB CODE """

@@ -261,7 +261,6 @@
      <addaction name="actionDark"/>
      <addaction name="actionAuto"/>
     </widget>
-    <addaction name="actionSettings"/>
     <addaction name="menuTheme"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
@@ -315,7 +314,6 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionExit"/>
-   <addaction name="actionSettings"/>
    <addaction name="actionTheme"/>
   </widget>
   <action name="actionExit">
@@ -333,29 +331,26 @@
     <string>Exit Projectionist</string>
    </property>
   </action>
-  <action name="actionSettings">
-   <property name="icon">
-    <iconset resource="buttons.qrc">
-     <normaloff>:/glass/buttons/glassButtonConfigure.png</normaloff>:/glass/buttons/glassButtonConfigure.png</iconset>
-   </property>
-   <property name="text">
-    <string>Settings</string>
-   </property>
-   <property name="statusTip">
-    <string>Configure Projectionist</string>
-   </property>
-  </action>
   <action name="actionLight">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Light</string>
    </property>
   </action>
   <action name="actionDark">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Dark</string>
    </property>
   </action>
   <action name="actionAuto">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Auto</string>
    </property>

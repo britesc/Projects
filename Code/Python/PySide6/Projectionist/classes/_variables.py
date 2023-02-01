@@ -5,6 +5,8 @@ def init() -> None:
     """ Global Variables """
     #global vProjectLocation
     #global vDatabaseLocation
+    #global vJ2S
+    #global vJ2U
 
     """ Non Global Variables """
 
