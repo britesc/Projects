@@ -44,14 +44,10 @@ class J2_Settings:
 
     def setSetting(self, Context, Value) -> None:
         """ Set the Setting """
-        self.Context = Context
-        self.Value = Value
-        v3JS.setValue(Context, self.Value)
+        v3JS.setValue(Context, Value)
 
     def getSetting(self, Context, Default) -> str:
         """ Get the Setting """
-        self.Context = Context
-        self.Default = Default
         vTemp1 = v3JS.value(Context, Default)
         if vTemp1 is False:
             vTemp1 = ""

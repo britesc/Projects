@@ -79,15 +79,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def MWlight(self) -> None:
         qdarktheme.setup_theme("light")
-        V2JS.setSetting("self,Window/Theme", "light")
+        V2JS.setSetting(self, "Window/Theme", "light")
+        self.actionLight.setChecked(True)
+        self.actionDark.setChecked(False)
+        self.actionAuto.setChecked(False)
 
     def MWdark(self) -> None:
         qdarktheme.setup_theme("dark")
-        V2JS.setSetting("self, Window/Theme", "dark")
+        V2JS.setSetting(self, "Window/Theme", "dark")
+        self.actionLight.setChecked(False)
+        self.actionDark.setChecked(True)
+        self.actionAuto.setChecked(False)
 
     def MWauto(self) -> None:
         qdarktheme.setup_theme("auto")
         V2JS.setSetting(self, "Window/Theme", "auto")
+        self.actionLight.setChecked(False)
+        self.actionDark.setChecked(False)
+        self.actionAuto.setChecked(True)
 
     def MWTheme(self) -> None:
         vMWTheme = V2JS.getSetting(self, "Window/Theme", "auto")
