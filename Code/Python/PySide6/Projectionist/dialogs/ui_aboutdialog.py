@@ -25,9 +25,9 @@ class Ui_aboutDialog(object):
     def setupUi(self, aboutDialog):
         if not aboutDialog.objectName():
             aboutDialog.setObjectName(u"aboutDialog")
-        aboutDialog.resize(400, 300)
-        aboutDialog.setMinimumSize(QSize(400, 300))
-        aboutDialog.setMaximumSize(QSize(400, 300))
+        aboutDialog.resize(400, 310)
+        aboutDialog.setMinimumSize(QSize(400, 310))
+        aboutDialog.setMaximumSize(QSize(400, 310))
         icon = QIcon()
         icon.addFile(u":/images/images/icon.png", QSize(), QIcon.Normal, QIcon.Off)
         aboutDialog.setWindowIcon(icon)
@@ -90,14 +90,11 @@ class Ui_aboutDialog(object):
 
         self.label_4 = QLabel(aboutDialog)
         self.label_4.setObjectName(u"label_4")
+        self.label_4.setAlignment(Qt.AlignCenter)
         self.label_4.setWordWrap(True)
+        self.label_4.setMargin(2)
 
         self.verticalLayout.addWidget(self.label_4)
-
-        self.verticalLayout_3 = QVBoxLayout()
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-
-        self.verticalLayout.addLayout(self.verticalLayout_3)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -133,7 +130,7 @@ class Ui_aboutDialog(object):
         self.labelVersion.setText(QCoreApplication.translate("aboutDialog", u"Version:", None))
         self.labelCreated.setText(QCoreApplication.translate("aboutDialog", u"Created: 02 February 2023 11:30:00", None))
         self.label.setText(QCoreApplication.translate("aboutDialog", u"<html><head/><body><h6 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:360;\">Copyright JTB 2023 All Rights Reserved</span></h6></body></html>", None))
-        self.label_4.setText(QCoreApplication.translate("aboutDialog", u"Prohectionist is a tool to assist in the Creation and Setup of various computer language projects.\n"
+        self.label_4.setText(QCoreApplication.translate("aboutDialog", u"Projectionist is a tool to assist in the Creation and Setup of various computer language projects.\n"
 "Including:\n"
 "Python, C, C++, Kotlin and Php amongst others.\n"
 "\n"

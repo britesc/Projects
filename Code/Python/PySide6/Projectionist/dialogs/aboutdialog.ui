@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>310</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>400</width>
-    <height>300</height>
+    <height>310</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>400</width>
-    <height>300</height>
+    <height>310</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -120,19 +120,22 @@
    <item>
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Prohectionist is a tool to assist in the Creation and Setup of various computer language projects.
+      <string>Projectionist is a tool to assist in the Creation and Setup of various computer language projects.
 Including:
 Python, C, C++, Kotlin and Php amongst others.
 
 It was created by Julian Bourne for Personal Use.</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
      <property name="wordWrap">
       <bool>true</bool>
      </property>
+     <property name="margin">
+      <number>2</number>
+     </property>
     </widget>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout_3"/>
    </item>
    <item>
     <spacer name="verticalSpacer">

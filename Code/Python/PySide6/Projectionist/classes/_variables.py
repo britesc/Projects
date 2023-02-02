@@ -2,13 +2,19 @@
 # coding: utf-8
 
 def init() -> None:
-    """ Global Variables """
-    #global vProjectLocation
-    #global vDatabaseLocation
-    #global vJ2S
-    #global vJ2U
-
-    """ Non Global Variables """
+    global __ProjectionistVersionMajor
+    __ProjectionistVersionMajor = "0"
+    global __ProjectionistVersionMinor
+    __ProjectionistVersionMinor = "0"
+    global __ProjectionistVersionBuild
+    __ProjectionistVersionBuild = "0"
+    global __ProjectionistVersionCompile
+    __ProjectionistVersionCompile = "1000"
+    global __ProjectionistVersion
+    __ProjectionistVersion = __ProjectionistVersionMajor + "."
+    + __ProjectionistVersionMinor + "."
+    + __ProjectionistVersionBuild + "."
+    + __ProjectionistVersionCompile
 
 
 def main() -> None:
