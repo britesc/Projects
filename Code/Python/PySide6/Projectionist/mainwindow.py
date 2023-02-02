@@ -1,10 +1,11 @@
 import qdarktheme
 
-from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtWidgets import QFileDialog
 from pathlib import Path
 
 from ui_mainwindow import Ui_MainWindow
+from dialogs.aboutdialog import AboutDialog
 from classes._j2_settings import J2_Settings as V2JS
 
 
@@ -28,6 +29,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButtonPFSave.clicked.connect(self.PFSave)
         self.pushButtonPFCancel.clicked.connect(self.PFCancel)
         self.lineEditPFConfig.textChanged.connect(self.PFChanged)
+
+        self.aboutDialog = AboutDialog()
 
         """
             When the window is created we first have to
@@ -111,7 +114,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.MWauto()
 
     def MWAbout(self) -> None:
-        QMessageBox.information(self, "Rubbish!", " Rubbish!")
+        '''QMessageBox.information(self, "Rubbish!", " Rubbish!")'''
+        self.aboutDialog.exec()
 
     def MWAboutQt(self) -> None:
         QApplication.aboutQt()
