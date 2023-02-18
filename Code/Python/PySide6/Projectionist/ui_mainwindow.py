@@ -16,10 +16,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QLabel,
-    QLineEdit, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
-    QTabWidget, QToolBar, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QMainWindow, QMenu, QMenuBar,
+    QSizePolicy, QStatusBar, QTabWidget, QToolBar,
+    QVBoxLayout, QWidget)
 import splash_rc
 import buttons_rc
 
@@ -63,6 +62,36 @@ class Ui_MainWindow(object):
         icon4 = QIcon()
         icon4.addFile(u":/glass/buttons/glassButtonQt.png", QSize(), QIcon.Normal, QIcon.Off)
         self.actionAboutQt.setIcon(icon4)
+        self.actionHTML = QAction(MainWindow)
+        self.actionHTML.setObjectName(u"actionHTML")
+        icon5 = QIcon()
+        icon5.addFile(u":/glass/buttons/glassButtonHtml.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionHTML.setIcon(icon5)
+        self.actionPHP = QAction(MainWindow)
+        self.actionPHP.setObjectName(u"actionPHP")
+        icon6 = QIcon()
+        icon6.addFile(u":/glass/buttons/glassButtonPhp.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionPHP.setIcon(icon6)
+        self.actionPython = QAction(MainWindow)
+        self.actionPython.setObjectName(u"actionPython")
+        icon7 = QIcon()
+        icon7.addFile(u":/glass/buttons/glassButtonPython.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionPython.setIcon(icon7)
+        self.actionArduino = QAction(MainWindow)
+        self.actionArduino.setObjectName(u"actionArduino")
+        icon8 = QIcon()
+        icon8.addFile(u":/glass/buttons/glassButtonArduino.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionArduino.setIcon(icon8)
+        self.actionBash = QAction(MainWindow)
+        self.actionBash.setObjectName(u"actionBash")
+        icon9 = QIcon()
+        icon9.addFile(u":/glass/buttons/glassButtonBash.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionBash.setIcon(icon9)
+        self.actionKotlin = QAction(MainWindow)
+        self.actionKotlin.setObjectName(u"actionKotlin")
+        icon10 = QIcon()
+        icon10.addFile(u":/glass/buttons/glassButtonKotlin.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.actionKotlin.setIcon(icon10)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
@@ -72,131 +101,6 @@ class Ui_MainWindow(object):
         self.verticalLayoutMain.setContentsMargins(0, -1, -1, -1)
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
-        self.tabInfo = QWidget()
-        self.tabInfo.setObjectName(u"tabInfo")
-        self.verticalLayout = QVBoxLayout(self.tabInfo)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.gridLayoutInfoTab = QGridLayout()
-        self.gridLayoutInfoTab.setObjectName(u"gridLayoutInfoTab")
-        self.labelInfoTitle = QLabel(self.tabInfo)
-        self.labelInfoTitle.setObjectName(u"labelInfoTitle")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.labelInfoTitle.sizePolicy().hasHeightForWidth())
-        self.labelInfoTitle.setSizePolicy(sizePolicy)
-        self.labelInfoTitle.setAlignment(Qt.AlignCenter)
-
-        self.gridLayoutInfoTab.addWidget(self.labelInfoTitle, 0, 0, 1, 1)
-
-        self.labelInfoDetails = QLabel(self.tabInfo)
-        self.labelInfoDetails.setObjectName(u"labelInfoDetails")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(99)
-        sizePolicy1.setHeightForWidth(self.labelInfoDetails.sizePolicy().hasHeightForWidth())
-        self.labelInfoDetails.setSizePolicy(sizePolicy1)
-        self.labelInfoDetails.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.labelInfoDetails.setWordWrap(True)
-        self.labelInfoDetails.setMargin(5)
-        self.labelInfoDetails.setIndent(-4)
-
-        self.gridLayoutInfoTab.addWidget(self.labelInfoDetails, 1, 0, 1, 1)
-
-
-        self.verticalLayout.addLayout(self.gridLayoutInfoTab)
-
-        self.tabWidget.addTab(self.tabInfo, "")
-        self.tabConfiguration = QWidget()
-        self.tabConfiguration.setObjectName(u"tabConfiguration")
-        self.gridLayout = QGridLayout(self.tabConfiguration)
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.verticalLayoutPFConfig = QVBoxLayout()
-        self.verticalLayoutPFConfig.setObjectName(u"verticalLayoutPFConfig")
-        self.horizontalLayoutPFConfig = QHBoxLayout()
-        self.horizontalLayoutPFConfig.setSpacing(10)
-        self.horizontalLayoutPFConfig.setObjectName(u"horizontalLayoutPFConfig")
-        self.horizontalLayoutPFConfig.setContentsMargins(10, -1, 10, -1)
-        self.labelPFConfig = QLabel(self.tabConfiguration)
-        self.labelPFConfig.setObjectName(u"labelPFConfig")
-        self.labelPFConfig.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-
-        self.horizontalLayoutPFConfig.addWidget(self.labelPFConfig)
-
-        self.lineEditPFConfig = QLineEdit(self.tabConfiguration)
-        self.lineEditPFConfig.setObjectName(u"lineEditPFConfig")
-        self.lineEditPFConfig.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-
-        self.horizontalLayoutPFConfig.addWidget(self.lineEditPFConfig, 0, Qt.AlignTop)
-
-
-        self.verticalLayoutPFConfig.addLayout(self.horizontalLayoutPFConfig)
-
-
-        self.gridLayout.addLayout(self.verticalLayoutPFConfig, 4, 0, 1, 1)
-
-        self.vertitcalLayoutgridLayoutConfigTabButtonLocate = QVBoxLayout()
-        self.vertitcalLayoutgridLayoutConfigTabButtonLocate.setObjectName(u"vertitcalLayoutgridLayoutConfigTabButtonLocate")
-        self.horizontalLayoutConfigButtonLocate = QHBoxLayout()
-        self.horizontalLayoutConfigButtonLocate.setObjectName(u"horizontalLayoutConfigButtonLocate")
-        self.horizontalSpacerTabConfigLineEditPFLeft = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayoutConfigButtonLocate.addItem(self.horizontalSpacerTabConfigLineEditPFLeft)
-
-        self.pushButtonPFLocate = QPushButton(self.tabConfiguration)
-        self.pushButtonPFLocate.setObjectName(u"pushButtonPFLocate")
-        icon5 = QIcon()
-        icon5.addFile(u":/glass/buttons/glassButtonFind.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonPFLocate.setIcon(icon5)
-
-        self.horizontalLayoutConfigButtonLocate.addWidget(self.pushButtonPFLocate)
-
-        self.pushButtonPFSave = QPushButton(self.tabConfiguration)
-        self.pushButtonPFSave.setObjectName(u"pushButtonPFSave")
-        self.pushButtonPFSave.setEnabled(False)
-        icon6 = QIcon()
-        icon6.addFile(u":/glass/buttons/glassButtonSave.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonPFSave.setIcon(icon6)
-
-        self.horizontalLayoutConfigButtonLocate.addWidget(self.pushButtonPFSave)
-
-        self.pushButtonPFCancel = QPushButton(self.tabConfiguration)
-        self.pushButtonPFCancel.setObjectName(u"pushButtonPFCancel")
-        self.pushButtonPFCancel.setEnabled(False)
-        icon7 = QIcon()
-        icon7.addFile(u":/glass/buttons/glassButtonCancel.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButtonPFCancel.setIcon(icon7)
-
-        self.horizontalLayoutConfigButtonLocate.addWidget(self.pushButtonPFCancel)
-
-        self.horizontalLayoutConfigButtonLocate.setStretch(0, 97)
-        self.horizontalLayoutConfigButtonLocate.setStretch(1, 1)
-        self.horizontalLayoutConfigButtonLocate.setStretch(2, 1)
-        self.horizontalLayoutConfigButtonLocate.setStretch(3, 1)
-
-        self.vertitcalLayoutgridLayoutConfigTabButtonLocate.addLayout(self.horizontalLayoutConfigButtonLocate)
-
-
-        self.gridLayout.addLayout(self.vertitcalLayoutgridLayoutConfigTabButtonLocate, 5, 0, 1, 1)
-
-        self.gridLayoutConfigTab = QGridLayout()
-        self.gridLayoutConfigTab.setObjectName(u"gridLayoutConfigTab")
-        self.labelConfigTitle = QLabel(self.tabConfiguration)
-        self.labelConfigTitle.setObjectName(u"labelConfigTitle")
-        self.labelConfigTitle.setAlignment(Qt.AlignCenter)
-
-        self.gridLayoutConfigTab.addWidget(self.labelConfigTitle, 0, 0, 1, 1)
-
-
-        self.gridLayout.addLayout(self.gridLayoutConfigTab, 0, 0, 1, 1)
-
-        self.gridLayout.setRowStretch(1, 1)
-        self.gridLayout.setRowStretch(4, 98)
-        self.gridLayout.setRowStretch(5, 1)
-        self.tabWidget.addTab(self.tabConfiguration, "")
-        self.tabAction = QWidget()
-        self.tabAction.setObjectName(u"tabAction")
-        self.tabWidget.addTab(self.tabAction, "")
 
         self.verticalLayoutMain.addWidget(self.tabWidget)
 
@@ -226,9 +130,15 @@ class Ui_MainWindow(object):
         self.toolBar.setIconSize(QSize(48, 48))
         self.toolBar.setFloatable(False)
         MainWindow.addToolBar(Qt.TopToolBarArea, self.toolBar)
-#if QT_CONFIG(shortcut)
-        self.labelPFConfig.setBuddy(self.lineEditPFConfig)
-#endif // QT_CONFIG(shortcut)
+        self.toolBarApps = QToolBar(MainWindow)
+        self.toolBarApps.setObjectName(u"toolBarApps")
+        self.toolBarApps.setEnabled(True)
+        self.toolBarApps.setBaseSize(QSize(96, 0))
+        self.toolBarApps.setMovable(True)
+        self.toolBarApps.setAllowedAreas(Qt.LeftToolBarArea|Qt.RightToolBarArea)
+        self.toolBarApps.setIconSize(QSize(96, 96))
+        self.toolBarApps.setFloatable(False)
+        MainWindow.addToolBar(Qt.LeftToolBarArea, self.toolBarApps)
 
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
@@ -242,10 +152,16 @@ class Ui_MainWindow(object):
         self.menuHelp.addAction(self.actionAboutQt)
         self.toolBar.addAction(self.actionExit)
         self.toolBar.addAction(self.actionTheme)
+        self.toolBarApps.addAction(self.actionBash)
+        self.toolBarApps.addAction(self.actionHTML)
+        self.toolBarApps.addAction(self.actionPHP)
+        self.toolBarApps.addAction(self.actionPython)
+        self.toolBarApps.addAction(self.actionArduino)
+        self.toolBarApps.addAction(self.actionKotlin)
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(-1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -272,30 +188,34 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(statustip)
         self.actionAbout.setText(QCoreApplication.translate("MainWindow", u"About", None))
         self.actionAboutQt.setText(QCoreApplication.translate("MainWindow", u"About Qt", None))
-        self.labelInfoTitle.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:xx-large; font-weight:700;\">Projectionist</span></h1></body></html>", None))
-        self.labelInfoDetails.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><h3 style=\" margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:large; font-weight:700;\">Welcome to Projectionist.</span></h3><h4>In order to make use of this excellent application it is first necessary to configure it.</h4><h4>It may also be necessary to add applications to the OS $PATH Variable to ensure that they can be found and utilised correctly. This should be fairly easy to do.</h4><h4>Once you are ready to commence the configuration, please click on the Configuration Tab and follow the instructions.</h4><h4>This application has been set to operate in a minimum size of 640 x 520, but can operate just as well or better in large sizes, imcluding full screen.</h4><h5 align=\"center\">Copyright J2Casa 2023. All Rights Reserved</h5><p><br/></p></body></html>", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabInfo), QCoreApplication.translate("MainWindow", u"Information", None))
-        self.labelPFConfig.setText(QCoreApplication.translate("MainWindow", u"Project Folder:", None))
-        self.lineEditPFConfig.setText("")
-        self.lineEditPFConfig.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Please Enter Project Main Folder", None))
-#if QT_CONFIG(statustip)
-        self.pushButtonPFLocate.setStatusTip(QCoreApplication.translate("MainWindow", u"Locate Project Folder", None))
-#endif // QT_CONFIG(statustip)
-        self.pushButtonPFLocate.setText(QCoreApplication.translate("MainWindow", u"Locate", None))
-#if QT_CONFIG(statustip)
-        self.pushButtonPFSave.setStatusTip(QCoreApplication.translate("MainWindow", u"Save Location of Project Folder", None))
-#endif // QT_CONFIG(statustip)
-        self.pushButtonPFSave.setText(QCoreApplication.translate("MainWindow", u"Save", None))
-#if QT_CONFIG(statustip)
-        self.pushButtonPFCancel.setStatusTip(QCoreApplication.translate("MainWindow", u"Discard Changes", None))
-#endif // QT_CONFIG(statustip)
-        self.pushButtonPFCancel.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
-        self.labelConfigTitle.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><h1 style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:xx-large; font-weight:700;\">Configuration</span></h1></body></html>", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabConfiguration), QCoreApplication.translate("MainWindow", u"Configuration", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabAction), QCoreApplication.translate("MainWindow", u"Action", None))
+        self.actionHTML.setText(QCoreApplication.translate("MainWindow", u"HTML", None))
+#if QT_CONFIG(tooltip)
+        self.actionHTML.setToolTip(QCoreApplication.translate("MainWindow", u"HTML Project", None))
+#endif // QT_CONFIG(tooltip)
+        self.actionPHP.setText(QCoreApplication.translate("MainWindow", u"PHP", None))
+#if QT_CONFIG(tooltip)
+        self.actionPHP.setToolTip(QCoreApplication.translate("MainWindow", u"PHP Project", None))
+#endif // QT_CONFIG(tooltip)
+        self.actionPython.setText(QCoreApplication.translate("MainWindow", u"Python", None))
+#if QT_CONFIG(tooltip)
+        self.actionPython.setToolTip(QCoreApplication.translate("MainWindow", u"Pyhton Project", None))
+#endif // QT_CONFIG(tooltip)
+        self.actionArduino.setText(QCoreApplication.translate("MainWindow", u"Arduino", None))
+#if QT_CONFIG(tooltip)
+        self.actionArduino.setToolTip(QCoreApplication.translate("MainWindow", u"Arduino Project", None))
+#endif // QT_CONFIG(tooltip)
+        self.actionBash.setText(QCoreApplication.translate("MainWindow", u"Bash", None))
+#if QT_CONFIG(tooltip)
+        self.actionBash.setToolTip(QCoreApplication.translate("MainWindow", u"Bash Project", None))
+#endif // QT_CONFIG(tooltip)
+        self.actionKotlin.setText(QCoreApplication.translate("MainWindow", u"Kotlin", None))
+#if QT_CONFIG(tooltip)
+        self.actionKotlin.setToolTip(QCoreApplication.translate("MainWindow", u"Kotlin Project", None))
+#endif // QT_CONFIG(tooltip)
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuTheme.setTitle(QCoreApplication.translate("MainWindow", u"Theme", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
         self.toolBar.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBar", None))
+        self.toolBarApps.setWindowTitle(QCoreApplication.translate("MainWindow", u"toolBarApps", None))
     # retranslateUi
 

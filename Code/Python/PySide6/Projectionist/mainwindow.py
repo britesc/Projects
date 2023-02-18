@@ -36,9 +36,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             When the window is created we first have to
             ensure that the Theme is Set
             Next we have to make sure that Tab 0 is showing
-            We use self.MWSettings() to senure all MainWindow Functionality is
+            We use self.MWSettings() to ensure all MainWindow Functionality is
             correct.
-            Next we ensure Config Tab bittons are off.
+            Next we ensure Config Tab buttons are off.
             And that and Line Edit Content is displayed
             We use self.PFSettings() to ensure all Config Tabs functionality
             is set.
@@ -46,19 +46,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             valid Dir.
             If the tab is shown we await an action
             1. If Locate is pressed we go to self.PFLocate()
-                Which opens a directory find and save dislog box
+                Which opens a directory find and save dialog box
                 and displays result in the lineEditPFConfig
             2. If there is any change to the lineEditPFConfig
                 then self.PFChanged() is called.
             3. If self.PFChanged() is happy that line entry is a dir it
-                will enable the save and canel buttons which calls
+                will enable the save and cancel buttons which calls
                 self.PFSave() or self.PFCancel() as appropriate
             4. PFSave writes the value from lineEdit to the
                 settings config file. Buttons are disabled again
             5. PFCancel retrieves the value from the settings file and
             reinserts it into the line Edit. Buttons are disabled again.
         """
-
+        self.hideTabs()
         self.MWSettings()
         self.PFSettings()
 
@@ -78,7 +78,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.MWlight()
             case _:
                 self.MWauto()
-        self.tabWidget.setCurrentIndex(0)
+        # #self.tabWidget.setCurrentIndex(0)
 
     def MWlight(self) -> None:
         qdarktheme.setup_theme("light")
@@ -166,3 +166,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButtonPFCancel.setEnabled(False)
 
     """ END OF CONFIG TAB CODE """
+
+    """ TAB SPECIFIC CODE """
+
+    def hideToolBarApps(self) -> None:
+        self.toolBarApps.setVisible(False)
+
+    def showToolBarApps(self) -> None:
+        self.toolBarApps.setVisible(True)
+
+    def showStartTabs(self) -> None:
+        self.tabWidget.setTabVisible(0, True)
+        self.tabWidget.setTabVisible(1, True)
+
+    def showTabsTest(self) -> None:
+        self.tabWidget.setTabVisible(2, False)
+
+    def hideTabs(self) -> None:
+        vNumTabs = self.tabWidget.count()
+        looper = 0
+        while looper < vNumTabs:
+            self.tabWidget.setTabVisible(looper, False)
+            looper += 1

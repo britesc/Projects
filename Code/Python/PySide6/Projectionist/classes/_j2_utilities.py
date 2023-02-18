@@ -7,6 +7,7 @@ class J2_Utilities:
     """ A Class containing Utilities """
 
     def __init__(self) -> None:
+        """ The __init__ Function """
         pass
 
     def __str__(self) -> str:

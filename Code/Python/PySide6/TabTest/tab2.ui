@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Tab2</class>
+ <widget class="QWidget" name="Tab2">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Tab</string>
+  </property>
+  <property name="toolTip">
+   <string>Tab Tool Tip</string>
+  </property>
+  <property name="statusTip">
+   <string>Tab Status Tip</string>
+  </property>
+  <property name="whatsThis">
+   <string>Tab Whats This</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+      <widget class="QLabel" name="labelHello">
+       <property name="text">
+        <string>HELLO AGAIN</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
